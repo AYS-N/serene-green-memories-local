@@ -11,6 +11,10 @@ const pagination = document.getElementById('blog-pagination');
 let currentPage = 1;
 const limit = 12;
 
+// URLパラメータを取得
+const urlParams = new URLSearchParams(window.location.search);
+const categoryFilter = urlParams.get('category');
+
 // 日付をフォーマットする関数
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -33,7 +37,13 @@ async function fetchBlogs(page = 1) {
     console.log('MicroCMS設定:', { SERVICE_DOMAIN, API_KEY: API_KEY ? 'あり' : 'なし' });
     
     const offset = (page - 1) * limit;
-    const url = `https://${SERVICE_DOMAIN}.microcms.io/api/v1/blogs?limit=${limit}&offset=${offset}`;
+    let url = `https://${SERVICE_DOMAIN}.microcms.io/api/v1/blogs?limit=${limit}&offset=${offset}`;
+    
+    // カテゴリフィルタリングがある場合
+    if (categoryFilter) {
+      url += `&filters=category[equals]${categoryFilter}`;
+    }
+    
     console.log('リクエストURL:', url);
     
     const response = await fetch(url, {
@@ -66,55 +76,65 @@ async function fetchBlogs(page = 1) {
 
 // サンプルブログデータ
 function getSampleBlogData() {
-  return {
-    contents: [
-      {
-        id: 'sample1',
-        title: '遺品整理の基本的な進め方｜心構えから実際の手順まで詳しく解説',
-        content: '<p>遺品整理は故人を偲ぶ大切な作業です。しかし、いざ始めようとすると何から手をつけていいかわからない方も多いのではないでしょうか。</p><p>この記事では、遺品整理の基本的な流れや心構え、注意点について詳しく解説いたします。</p>',
-        publishedAt: '2024-12-15T09:00:00.000Z',
-        category: {
-          id: 'tips',
-          name: '整理のコツ'
-        },
-        eyecatch: {
-          url: 'images/service-estate.png',
-          width: 800,
-          height: 600
-        }
+  const allSampleData = [
+    {
+      id: 'sample1',
+      title: '遺品整理の基本的な進め方｜心構えから実際の手順まで詳しく解説',
+      content: '<p>遺品整理は故人を偲ぶ大切な作業です。しかし、いざ始めようとすると何から手をつけていいかわからない方も多いのではないでしょうか。</p><p>この記事では、遺品整理の基本的な流れや心構え、注意点について詳しく解説いたします。</p>',
+      publishedAt: '2024-12-15T09:00:00.000Z',
+      category: {
+        id: 'tips',
+        name: '整理のコツ'
       },
-      {
-        id: 'sample2',
-        title: '生前整理のメリットとは？始める最適なタイミングについて',
-        content: '<p>生前整理は、自分自身で身の回りの整理を行うことです。最近では終活の一環として注目を集めています。</p>',
-        publishedAt: '2024-12-10T10:30:00.000Z',
-        category: {
-          id: 'lifetime',
-          name: '生前整理'
-        },
-        eyecatch: {
-          url: 'images/service-lifetime-large.jpg',
-          width: 800,
-          height: 600
-        }
-      },
-      {
-        id: 'sample3',
-        title: '特殊清掃について知っておきたいこと',
-        content: '<p>特殊清掃は通常の清掃では対応できない現場での清掃作業です。専門的な知識と技術が必要な分野です。</p>',
-        publishedAt: '2024-12-05T14:00:00.000Z',
-        category: {
-          id: 'cleanup',
-          name: '特殊清掃'
-        },
-        eyecatch: {
-          url: 'images/service-cleanup-large.jpg',
-          width: 800,
-          height: 600
-        }
+      eyecatch: {
+        url: 'images/service-estate.png',
+        width: 800,
+        height: 600
       }
-    ],
-    totalCount: 3
+    },
+    {
+      id: 'sample2',
+      title: '生前整理のメリットとは？始める最適なタイミングについて',
+      content: '<p>生前整理は、自分自身で身の回りの整理を行うことです。最近では終活の一環として注目を集めています。</p>',
+      publishedAt: '2024-12-10T10:30:00.000Z',
+      category: {
+        id: 'lifetime',
+        name: '生前整理'
+      },
+      eyecatch: {
+        url: 'images/service-lifetime-large.jpg',
+        width: 800,
+        height: 600
+      }
+    },
+    {
+      id: 'sample3',
+      title: '特殊清掃について知っておきたいこと',
+      content: '<p>特殊清掃は通常の清掃では対応できない現場での清掃作業です。専門的な知識と技術が必要な分野です。</p>',
+      publishedAt: '2024-12-05T14:00:00.000Z',
+      category: {
+        id: 'cleanup',
+        name: '特殊清掃'
+      },
+      eyecatch: {
+        url: 'images/service-cleanup-large.jpg',
+        width: 800,
+        height: 600
+      }
+    }
+  ];
+
+  // カテゴリフィルタリングがある場合
+  let filteredData = allSampleData;
+  if (categoryFilter) {
+    filteredData = allSampleData.filter(blog => 
+      blog.category && blog.category.id === categoryFilter
+    );
+  }
+
+  return {
+    contents: filteredData,
+    totalCount: filteredData.length
   };
 }
 
@@ -229,6 +249,43 @@ async function loadBlogs() {
 // ページ読み込み時にブログ記事を取得
 document.addEventListener('DOMContentLoaded', () => {
   if (blogList) {
+    // カテゴリフィルタがある場合はページタイトルを更新
+    if (categoryFilter) {
+      updatePageTitleForCategory();
+    }
     loadBlogs();
   }
 });
+
+// カテゴリに応じてページタイトルを更新する関数
+async function updatePageTitleForCategory() {
+  try {
+    // カテゴリ情報を取得してタイトルを更新
+    const response = await fetch(`https://${SERVICE_DOMAIN}.microcms.io/api/v1/blogs?limit=1&filters=category[equals]${categoryFilter}`, {
+      headers: {
+        'X-API-KEY': API_KEY
+      }
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      if (data.contents.length > 0 && data.contents[0].category) {
+        const categoryName = data.contents[0].category.name;
+        const pageTitle = document.querySelector('.page-title h1');
+        const pageDescription = document.querySelector('.page-title p');
+        
+        if (pageTitle) {
+          pageTitle.textContent = `ブログ - ${categoryName}`;
+        }
+        if (pageDescription) {
+          pageDescription.textContent = `${categoryName}に関する記事一覧です。`;
+        }
+        
+        // ブラウザのタイトルも更新
+        document.title = `ブログ - ${categoryName} | 整理のミカタ - 遺品整理のプロフェッショナル`;
+      }
+    }
+  } catch (error) {
+    console.log('カテゴリ情報の取得に失敗しました:', error);
+  }
+}
