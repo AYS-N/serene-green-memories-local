@@ -1909,3 +1909,77 @@ FAQ ページ
     font-size: 14px;
   }
 }
+
+/* ==========================================================================
+料金表 (Pricing Table)
+========================================================================== */
+.pricing-section {
+  background-color: var(--color-bg-light);
+}
+
+.pricing-intro {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: var(--color-text-light);
+}
+
+.pricing-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: 16px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pricing-table th {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.pricing-table td {
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.pricing-table tbody tr:hover {
+  background-color: var(--color-primary-bg);
+}
+
+.pricing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .pricing-table th,
+  .pricing-table td {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+  
+  .pricing-table th {
+    font-size: 14px;
+  }
+}
