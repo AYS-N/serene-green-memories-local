@@ -97,7 +97,35 @@ function initTestimonialSlider() {
 
 // FAQのアコーディオン初期化
 function initFaq() {
-  // FAQのアコーディオン関数をグローバルに設定
+  // FAQの質問要素にクリックイベントを設定
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(function(question) {
+    question.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+      const isActive = this.classList.contains('active');
+      
+      // すべてのFAQ質問を非アクティブにする
+      const allQuestions = document.querySelectorAll('.faq-question');
+      const allAnswers = document.querySelectorAll('.faq-answer');
+      
+      allQuestions.forEach(function(q) {
+        q.classList.remove('active');
+      });
+      
+      allAnswers.forEach(function(a) {
+        a.classList.remove('active');
+      });
+      
+      // クリックされた質問をトグルする
+      if (!isActive && answer && answer.classList.contains('faq-answer')) {
+        this.classList.add('active');
+        answer.classList.add('active');
+      }
+    });
+  });
+  
+  // 後方互換性のためにグローバル関数も定義（念のため）
   window.toggleAnswer = function(element) {
     const answer = element.nextElementSibling;
     const isActive = element.classList.contains('active');
