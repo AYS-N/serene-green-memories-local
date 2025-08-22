@@ -19,7 +19,8 @@ export default defineConfig(() => ({
         contact: 'contact.html',
         faq: 'faq.html',
         blog: 'blog.html',
-        blogDetail: 'blog-detail.html'
+        blogDetail: 'blog-detail.html',
+        mainJs: 'js/main.js'
       }
     }
   },
