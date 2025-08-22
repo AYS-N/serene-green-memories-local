@@ -1229,6 +1229,9 @@ FAQ ページ
 .faq-answer {
   display: none;
   padding: 0 20px 20px;
+}
+
+.faq-answer.active {
   display: flex;
 }
 
@@ -1504,6 +1507,14 @@ FAQ ページ
   text-align: center;
   margin-bottom: 40px;
   color: var(--color-text-light);
+}
+
+/* ブログプレビュー（トップページ用） */
+.blog-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
 }
 
 .blog-grid {
@@ -1862,6 +1873,11 @@ FAQ ページ
 }
 
 @media (max-width: 768px) {
+  .blog-preview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
   .blog-grid {
     grid-template-columns: 1fr;
     gap: 20px;
