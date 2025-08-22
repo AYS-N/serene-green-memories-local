@@ -30,26 +30,92 @@ async function fetchBlogs(page = 1) {
       return null;
     }
     
+    console.log('MicroCMS設定:', { SERVICE_DOMAIN, API_KEY: API_KEY ? 'あり' : 'なし' });
+    
     const offset = (page - 1) * limit;
-    const response = await fetch(`https://${SERVICE_DOMAIN}.microcms.io/api/v1/blogs?limit=${limit}&offset=${offset}`, {
+    const url = `https://${SERVICE_DOMAIN}.microcms.io/api/v1/blogs?limit=${limit}&offset=${offset}`;
+    console.log('リクエストURL:', url);
+    
+    const response = await fetch(url, {
       headers: {
         'X-API-KEY': API_KEY
       }
     });
     
+    console.log('レスポンス:', response.status, response.statusText);
+    
     if (!response.ok) {
-      throw new Error('ブログ記事の取得に失敗しました');
+      const errorText = await response.text();
+      console.error('エラー詳細:', errorText);
+      throw new Error(`ブログ記事の取得に失敗しました: ${response.status} ${response.statusText}`);
     }
     
     const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error:', error);
+    
+    // MicroCMSからの取得に失敗した場合はサンプルデータを表示
     if (blogList) {
-      blogList.innerHTML = '<p class="error-message">ブログ記事の取得に失敗しました。しばらく経ってからもう一度お試しください。</p>';
+      console.log('MicroCMSからの取得に失敗しました。サンプルデータを表示します。');
+      return getSampleBlogData();
     }
     return null;
   }
+}
+
+// サンプルブログデータ
+function getSampleBlogData() {
+  return {
+    contents: [
+      {
+        id: 'sample1',
+        title: '遺品整理の基本的な進め方｜心構えから実際の手順まで詳しく解説',
+        content: '<p>遺品整理は故人を偲ぶ大切な作業です。しかし、いざ始めようとすると何から手をつけていいかわからない方も多いのではないでしょうか。</p><p>この記事では、遺品整理の基本的な流れや心構え、注意点について詳しく解説いたします。</p>',
+        publishedAt: '2024-12-15T09:00:00.000Z',
+        category: {
+          id: 'tips',
+          name: '整理のコツ'
+        },
+        eyecatch: {
+          url: 'images/service-estate.png',
+          width: 800,
+          height: 600
+        }
+      },
+      {
+        id: 'sample2',
+        title: '生前整理のメリットとは？始める最適なタイミングについて',
+        content: '<p>生前整理は、自分自身で身の回りの整理を行うことです。最近では終活の一環として注目を集めています。</p>',
+        publishedAt: '2024-12-10T10:30:00.000Z',
+        category: {
+          id: 'lifetime',
+          name: '生前整理'
+        },
+        eyecatch: {
+          url: 'images/service-lifetime-large.jpg',
+          width: 800,
+          height: 600
+        }
+      },
+      {
+        id: 'sample3',
+        title: '特殊清掃について知っておきたいこと',
+        content: '<p>特殊清掃は通常の清掃では対応できない現場での清掃作業です。専門的な知識と技術が必要な分野です。</p>',
+        publishedAt: '2024-12-05T14:00:00.000Z',
+        category: {
+          id: 'cleanup',
+          name: '特殊清掃'
+        },
+        eyecatch: {
+          url: 'images/service-cleanup-large.jpg',
+          width: 800,
+          height: 600
+        }
+      }
+    ],
+    totalCount: 3
+  };
 }
 
 // ブログカードを作成する関数

@@ -20,6 +20,16 @@
             "env": {
                 "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN"
             }
+        },
+        "serena": {
+            "command": "uvx",
+            "args": [
+                "--from",
+                "git+https://github.com/oraios/serena",
+                "serena-mcp-server",
+                "--project",
+                "C:\\Users\\AtsushiNoguchi\\serene-green-memories-local"
+            ]
         }
     }
 }
