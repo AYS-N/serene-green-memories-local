@@ -104,20 +104,20 @@ function initFaq() {
     
     // すべてのFAQ質問を非アクティブにする
     const allQuestions = document.querySelectorAll('.faq-question');
+    const allAnswers = document.querySelectorAll('.faq-answer');
+    
     allQuestions.forEach(function(question) {
       question.classList.remove('active');
-      const answerElement = question.nextElementSibling;
-      if (answerElement && answerElement.classList.contains('faq-answer')) {
-        answerElement.style.display = 'none';
-      }
+    });
+    
+    allAnswers.forEach(function(answerElement) {
+      answerElement.classList.remove('active');
     });
     
     // クリックされた質問をトグルする
-    if (!isActive) {
+    if (!isActive && answer && answer.classList.contains('faq-answer')) {
       element.classList.add('active');
-      if (answer && answer.classList.contains('faq-answer')) {
-        answer.style.display = 'flex';
-      }
+      answer.classList.add('active');
     }
   }
 }
