@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# testing
+test-results/
+playwright-report/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +26,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# MCP servers (local development)
+mcp-servers/
+
+# Local settings
+.claude/settings.local.json
