@@ -4,7 +4,6 @@ const SERVICE_DOMAIN = import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN;
 const API_KEY = import.meta.env.VITE_MICROCMS_API_KEY;
 
 // DOM要素
-const blogTitle = document.getElementById('blog-title');
 const blogDetailTitle = document.getElementById('blog-detail-title');
 const blogDetailDate = document.getElementById('blog-detail-date');
 const blogDetailCategory = document.getElementById('blog-detail-category');
@@ -182,18 +181,52 @@ function getSampleBlogDetail(id) {
 // カテゴリ一覧を取得する関数
 async function fetchCategories() {
   try {
+    // まずカテゴリ専用エンドポイントを試す
+    const categoryEndpoints = ['categories', 'category'];
+    
+    for (const endpoint of categoryEndpoints) {
+      try {
+        const response = await fetch(`https://${SERVICE_DOMAIN}.microcms.io/api/v1/${endpoint}`, {
+          headers: {
+            'X-API-KEY': API_KEY
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          console.log('カテゴリ取得成功:', endpoint, data);
+          return data.contents || data;
+        }
+      } catch (err) {
+        continue;
+      }
+    }
+    
+    // カテゴリエンドポイントがない場合、ブログ記事からカテゴリを抽出
     const response = await fetch(`https://${SERVICE_DOMAIN}.microcms.io/api/v1/blogs`, {
       headers: {
         'X-API-KEY': API_KEY
       }
     });
     
-    if (!response.ok) {
-      throw new Error('カテゴリの取得に失敗しました');
+    if (response.ok) {
+      const data = await response.json();
+      const uniqueCategories = [];
+      const categoryMap = new Map();
+      
+      data.contents.forEach(blog => {
+        if (blog.category && !categoryMap.has(blog.category.id)) {
+          categoryMap.set(blog.category.id, {
+            id: blog.category.id,
+            name: blog.category.name || blog.category.id
+          });
+        }
+      });
+      
+      return Array.from(categoryMap.values());
     }
     
-    const data = await response.json();
-    return data.contents;
+    throw new Error('カテゴリの取得に失敗しました');
   } catch (error) {
     console.error('Error:', error);
     // サンプルカテゴリデータを返す
@@ -251,7 +284,6 @@ async function displayBlogDetail() {
   
   // タイトル設定
   document.title = `${blog.title} | 整理のミカタ - 遺品整理のプロフェッショナル`;
-  blogTitle.textContent = blog.title;
   blogDetailTitle.textContent = blog.title;
   
   // 日付設定
