@@ -1,6 +1,5 @@
 
 import { defineConfig } from 'vite'
-import path from 'path'
 
 export default defineConfig(() => ({
   server: {
@@ -23,10 +22,5 @@ export default defineConfig(() => ({
         mainJs: 'js/main.js'
       }
     }
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
   }
 }))
