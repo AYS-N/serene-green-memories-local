@@ -1028,9 +1028,8 @@ ul, ol {
 }
 
 .message-content {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .message-image img {
@@ -1116,7 +1115,6 @@ ul, ol {
 
 @media (max-width: 768px) {
   .philosophy-content,
-  .message-content,
   .map-content {
     grid-template-columns: 1fr;
   }
