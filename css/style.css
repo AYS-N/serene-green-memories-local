@@ -1008,10 +1008,8 @@ ul, ol {
 */
 
 .philosophy-content {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 40px;
-  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .philosophy-main {
@@ -1114,7 +1112,6 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
-  .philosophy-content,
   .map-content {
     grid-template-columns: 1fr;
   }
