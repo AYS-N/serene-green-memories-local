@@ -4,22 +4,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a hybrid website project for "整理のミカタ" (Estate Organization Service) that combines traditional static HTML pages with modern React/TypeScript components. The project uses Vite as the build tool and integrates with MicroCMS for blog content management.
+This is a static website project for "整理のミカタ" (Estate Organization Service) that provides estate organization, cleanup, and valuation services. The project uses Vite as the build tool and integrates with MicroCMS for blog content management.
 
 ## Architecture
 
 ### Frontend Structure
-- **Static HTML Pages**: Traditional multi-page website (`index.html`, `about.html`, `services.html`, etc.)
-- **React Components**: Modern UI components in `src/components/` using shadcn/ui library
-- **Styling**: Combination of traditional CSS (`css/style.css`) and Tailwind CSS for React components
+- **Static HTML Pages**: Traditional multi-page website (`index.html`, `about.html`, `services.html`, `contact.html`, `faq.html`, `blog.html`, `blog-detail.html`)
+- **Styling**: Traditional CSS (`css/style.css`) with modern CSS features
+- **JavaScript**: Vanilla ES6+ modules in `js/` directory for page-specific functionality
 - **Content Management**: MicroCMS integration for blog functionality
 
 ### Key Technologies
 - **Build Tool**: Vite with multiple entry points for different HTML pages
-- **Framework**: React 18 with TypeScript
-- **UI Library**: shadcn/ui components (Radix UI primitives)
-- **Styling**: Tailwind CSS + traditional CSS
-- **CMS**: MicroCMS for blog content
+- **Frontend**: Pure HTML5, CSS3, and vanilla JavaScript (ES6+)
+- **CMS**: MicroCMS for blog content (microcms-js-sdk)
 - **Testing**: Playwright for E2E testing
 - **Deployment**: Lovable platform
 
@@ -53,23 +51,29 @@ npm i
 ## Development Guidelines
 
 ### File Organization
-- Static assets and traditional pages in root directory
-- React components in `src/components/`
-- Utility functions in `src/lib/`
-- Custom hooks in `src/hooks/`
-- Component aliases use `@/` prefix (resolves to `./src`)
+- **HTML files**: Root directory - each page is a separate HTML file
+- **JavaScript**: `js/` directory with page-specific modules (`main.js`, `index.js`, `blog.js`, `blog-detail.js`)
+- **CSS**: Single stylesheet at `css/style.css`
+- **Images**: Static assets in `images/` directory
+- **Tests**: Playwright tests in `tests/` directory
 
 ### Content Management
-- Blog content fetched from MicroCMS via `src/lib/microcms.ts`
+- Blog content fetched from MicroCMS via JavaScript modules
 - Environment variables required: `VITE_MICROCMS_SERVICE_DOMAIN`, `VITE_MICROCMS_API_KEY`
-- Blog components: `BlogCard.tsx` for article display
-- Blog pages use vanilla JavaScript for MicroCMS integration (see `js/blog.js`, `js/blog-detail.js`)
+- Blog functionality implemented in `js/blog.js` and `js/blog-detail.js`
+- No server-side rendering - content loaded client-side via fetch API
 
 ### Build Configuration
-- Multi-page setup via Vite `rollupOptions.input` with entries: main, about, services, contact, faq, blog, blogDetail
-- Each HTML page has its own JavaScript entry point in `js/` directory
-- Static assets served from `images/` and `css/` directories
-- Hybrid architecture combines traditional JavaScript (in `js/` directory) with React components
+- Multi-page setup via Vite `rollupOptions.input` with entries for each HTML page
+- Each HTML page can have its own JavaScript entry point
+- Static assets served from root-level directories (`images/`, `css/`)
+- Development server runs on port 8080 with IPv6 support
+
+### Business Context
+- Estate organization service focusing on cleanup and valuation
+- Integrated buying/valuation service as part of cleanup work (not standalone buying service)
+- International sales network including Philippines for items difficult to sell domestically
+- Services include estate organization, cleanup, waste removal, and integrated valuation
 
 ### Testing Setup
 - Playwright configured for cross-browser testing (Chrome, Firefox, Safari)
