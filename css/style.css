@@ -334,38 +334,10 @@ ul, ol {
   justify-content: center;
 }
 
-/* メインビジュアルの電話ボタンを特別に強調 */
-.main-visual .tel-btn {
-  position: relative;
-  animation: pulse 2s infinite;
-  color: white;
-}
-
+/* メインビジュアルの電話ボタンのテキストを白に */
 .main-visual .tel-btn .tel-label,
 .main-visual .tel-btn .tel-number {
   color: white;
-}
-
-.main-visual .tel-btn::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(45deg, var(--color-primary), #4a9d54);
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0.8;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
 }
 
 .tel-btn {
