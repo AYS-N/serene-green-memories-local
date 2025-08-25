@@ -338,6 +338,12 @@ ul, ol {
 .main-visual .tel-btn {
   position: relative;
   animation: pulse 2s infinite;
+  color: white;
+}
+
+.main-visual .tel-btn .tel-label,
+.main-visual .tel-btn .tel-number {
+  color: white;
 }
 
 .main-visual .tel-btn::before {
@@ -778,10 +784,6 @@ ul, ol {
   color: var(--color-primary);
   line-height: 1.2;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  padding: 8px 16px;
-  background: linear-gradient(135deg, rgba(63, 125, 57, 0.1), rgba(63, 125, 57, 0.05));
-  border-radius: 8px;
-  border: 2px solid var(--color-primary);
   display: inline-block;
   margin: 10px 0;
 }
