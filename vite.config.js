@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig(() => ({
+  base: '/serene-green-memories-local/',
   server: {
     host: "::",
     port: 8080,
