@@ -76,6 +76,13 @@ npm i
 - Test server automatically starts on `http://localhost:8080`
 - Tests located in `tests/` directory
 
+## Git Workflow
+
+### Automatic Push Policy
+- **IMPORTANT**: After completing any code changes, always commit and push to GitHub automatically
+- Use descriptive commit messages that explain the changes and their purpose
+- Follow the established commit message format with Claude Code attribution
+
 ## MCP Server Integration
 
 The project includes MCP server configurations in the `mcp-servers/` directory with various utilities including filesystem, fetch, git, and memory servers. These are development tools and not part of the main application.
