@@ -334,11 +334,48 @@ ul, ol {
   justify-content: center;
 }
 
+/* メインビジュアルの電話ボタンを特別に強調 */
+.main-visual .tel-btn {
+  position: relative;
+  animation: pulse 2s infinite;
+}
+
+.main-visual .tel-btn::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, var(--color-primary), #4a9d54);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
 .tel-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: var(--color-primary);
+  color: white;
 }
 
 .tel-label {
@@ -346,8 +383,10 @@ ul, ol {
 }
 
 .tel-number {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
+  color: var(--color-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -714,10 +753,17 @@ ul, ol {
 
 .contact-tel {
   display: inline-block;
-  background-color: white;
-  padding: 20px 30px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+  padding: 25px 35px;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 3px solid var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.contact-tel:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .contact-tel-label {
@@ -727,10 +773,17 @@ ul, ol {
 }
 
 .contact-tel-number {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(63, 125, 57, 0.1), rgba(63, 125, 57, 0.05));
+  border-radius: 8px;
+  border: 2px solid var(--color-primary);
+  display: inline-block;
+  margin: 10px 0;
 }
 
 .contact-tel-hours {
