@@ -329,9 +329,16 @@ ul, ol {
 
 .main-visual-buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 15px;
   justify-content: center;
+  align-items: stretch;
+}
+
+.main-visual-buttons .btn {
+  flex: 1;
+  max-width: 280px;
+  white-space: nowrap;
 }
 
 /* メインビジュアルの電話ボタンを隣のボタンと同じデザインに */
