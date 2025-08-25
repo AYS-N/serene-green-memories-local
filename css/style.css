@@ -929,7 +929,8 @@ ul, ol {
 .service-detail-image img {
   border-radius: var(--radius-md);
   width: 100%;
-  height: auto;
+  height: 300px;
+  object-fit: cover;
 }
 
 .service-detail-title {
