@@ -367,7 +367,21 @@ ul, ol {
   }
   
   .main-visual-buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+
+/* 非常に小さい画面では縦並び */
+@media (max-width: 480px) {
+  .main-visual-buttons {
     flex-direction: column;
+    gap: 15px;
+  }
+  
+  .btn-large {
+    width: 100%;
+    max-width: 300px;
   }
 }
 
