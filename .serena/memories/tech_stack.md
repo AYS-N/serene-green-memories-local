@@ -1,42 +1,59 @@
-# Technology Stack
+# Tech Stack (Updated 2025-08-22)
 
-## Core Technologies
-- **Build Tool**: Vite 5.4.1
-- **Frontend Framework**: React 18.3.1 with TypeScript 5.5.3
-- **Styling**: 
-  - Tailwind CSS 3.4.11 (for React components)
-  - Traditional CSS (css/style.css for static pages)
-- **UI Library**: shadcn/ui components based on Radix UI primitives
-- **Content Management**: MicroCMS (microcms-js-sdk 3.2.0)
-- **Testing**: Playwright for E2E testing
-- **Package Manager**: npm
+## 整理のミカタ - Technology Stack
 
-## Key Dependencies
-### React Ecosystem
-- React 18.3.1 + React DOM 18.3.1
-- React Router DOM 6.26.2
-- React Hook Form 7.53.0
-- @tanstack/react-query 5.56.2
+### Core Technologies
+- **HTML5**: 標準的なセマンティックマークアップ
+- **CSS3**: 従来型スタイリング（css/style.css）
+- **Vanilla JavaScript (ES6+)**: フレームワークなしのモダンJS
+- **Vite**: 高速ビルドツール・開発サーバー
 
-### UI Components (shadcn/ui + Radix UI)
-- Complete shadcn/ui component library
-- Radix UI primitives for accessibility
-- Lucide React for icons
-- Tailwind CSS with animations
+### Content Management
+- **MicroCMS**: ヘッドレスCMS（ブログ機能）
+- **microcms-js-sdk**: MicroCMS JavaScript SDK
 
-### Development Tools
-- ESLint for linting
-- TypeScript for type safety
-- PostCSS + Autoprefixer
-- Playwright for testing
+### Development & Testing
+- **ESLint**: JavaScript linting
+- **Playwright**: E2Eテスト自動化
+- **Git**: バージョン管理
 
-### Utilities
-- clsx + tailwind-merge for className utilities
-- date-fns for date formatting
-- zod for schema validation
+### Build & Deployment
+- **Vite**: バンドリング・最適化
+- **Multi-page configuration**: 各HTMLファイルを個別エントリーポイント
+- **Lovable platform**: デプロイメント（想定）
 
-## Architecture Pattern
-- **Multi-page Setup**: Each HTML page has its own entry point
-- **Hybrid Approach**: Traditional HTML/CSS + React components
-- **Component-based**: Reusable UI components in src/components/
-- **Type-safe**: Full TypeScript coverage for React code
+### Dependencies (package.json)
+#### Production
+```json
+{
+  "microcms-js-sdk": "^3.2.0"
+}
+```
+
+#### Development
+```json
+{
+  "@eslint/js": "^9.9.0",
+  "@playwright/test": "^1.55.0", 
+  "eslint": "^9.9.0",
+  "globals": "^15.9.0",
+  "vite": "^5.4.1"
+}
+```
+
+### 重要な技術的特徴
+1. **フレームワークフリー**: React/Vue/Angularなし
+2. **軽量設計**: 最小限の依存関係
+3. **モダンJS**: ES6 modules, async/await, fetch API
+4. **静的サイト**: サーバーサイドレンダリングなし
+5. **CMS統合**: MicroCMSでコンテンツ管理
+
+### 開発環境要件
+- Node.js (package.jsonで管理)
+- 環境変数:
+  - `VITE_MICROCMS_SERVICE_DOMAIN`
+  - `VITE_MICROCMS_API_KEY`
+
+### ビルド出力
+- `dist/`: プロダクションビルド
+- 各HTMLファイルとアセットが最適化されて出力
