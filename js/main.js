@@ -207,3 +207,173 @@ function scrollToHashElement() {
     console.log('DOMContentLoadedでメニューを初期化しました');
   });
 })();
+
+// 30秒簡易診断ツール
+function initQuickAssessment() {
+  const form = document.getElementById('quick-assessment');
+  if (!form) return;
+
+  let currentStep = 1;
+  const answers = {};
+  const totalSteps = 3;
+
+  // プログレスバーを更新
+  function updateProgress() {
+    const progressFill = document.getElementById('progress-fill');
+    const currentStepSpan = document.getElementById('current-step');
+    
+    if (progressFill) {
+      progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
+    }
+    if (currentStepSpan) {
+      currentStepSpan.textContent = currentStep;
+    }
+  }
+
+  // 次のステップに進む
+  function nextStep() {
+    // 現在のステップを非表示
+    const currentStepEl = document.querySelector(`[data-step="${currentStep}"]`);
+    if (currentStepEl) {
+      currentStepEl.classList.remove('active');
+    }
+
+    currentStep++;
+    
+    if (currentStep <= totalSteps) {
+      // 次のステップを表示
+      const nextStepEl = document.querySelector(`[data-step="${currentStep}"]`);
+      if (nextStepEl) {
+        nextStepEl.classList.add('active');
+      }
+      updateProgress();
+    } else {
+      // 診断完了 - 結果を表示
+      showResult();
+    }
+  }
+
+  // 診断結果を表示
+  function showResult() {
+    // 全ステップを非表示
+    document.querySelectorAll('.question-step').forEach(step => {
+      step.style.display = 'none';
+    });
+
+    // プログレスバーを非表示
+    const progressEl = document.querySelector('.assessment-progress');
+    if (progressEl) {
+      progressEl.style.display = 'none';
+    }
+
+    // 結果を計算して表示
+    calculateAndShowResult();
+
+    // 結果セクションを表示
+    const resultEl = document.getElementById('assessment-result');
+    if (resultEl) {
+      resultEl.style.display = 'block';
+    }
+  }
+
+  // 診断結果を計算
+  function calculateAndShowResult() {
+    const { location, condition, timing } = answers;
+    
+    let baseCost = 100000;
+    let minCost = 80000;
+    let maxCost = 150000;
+    let estimatedDays = '1〜2日';
+    let buybackEffect = '最大 ¥30,000 削減可能';
+
+    // 場所による調整
+    if (location === 'apartment') {
+      baseCost = 120000;
+      minCost = 90000;
+      maxCost = 180000;
+      estimatedDays = '1〜2日';
+    } else if (location === 'house') {
+      baseCost = 200000;
+      minCost = 150000;
+      maxCost = 350000;
+      estimatedDays = '2〜4日';
+      buybackEffect = '最大 ¥80,000 削減可能';
+    } else if (location === 'room') {
+      baseCost = 80000;
+      minCost = 50000;
+      maxCost = 120000;
+      estimatedDays = '半日〜1日';
+      buybackEffect = '最大 ¥20,000 削減可能';
+    }
+
+    // 状況による調整
+    if (condition === 'cluttered') {
+      minCost = Math.floor(minCost * 1.3);
+      maxCost = Math.floor(maxCost * 1.4);
+    } else if (condition === 'heavy') {
+      minCost = Math.floor(minCost * 1.6);
+      maxCost = Math.floor(maxCost * 1.8);
+      if (estimatedDays.includes('〜')) {
+        const days = estimatedDays.split('〜');
+        estimatedDays = `${days[0]}〜${parseInt(days[1]) + 1}日`;
+      }
+    }
+
+    // 急ぎの場合の調整
+    if (timing === 'urgent') {
+      minCost = Math.floor(minCost * 1.2);
+      maxCost = Math.floor(maxCost * 1.3);
+    }
+
+    // 結果を更新
+    const costEl = document.getElementById('estimated-cost');
+    const timeEl = document.getElementById('estimated-time');
+    const buybackEl = document.getElementById('buyback-effect');
+
+    if (costEl) {
+      costEl.textContent = `¥${minCost.toLocaleString()} 〜 ¥${maxCost.toLocaleString()}`;
+    }
+    if (timeEl) {
+      timeEl.textContent = estimatedDays;
+    }
+    if (buybackEl) {
+      buybackEl.textContent = buybackEffect;
+    }
+  }
+
+  // オプションボタンのクリックイベント
+  form.addEventListener('click', function(e) {
+    const optionBtn = e.target.closest('.option-btn');
+    if (!optionBtn) return;
+
+    // 同じステップの他のボタンの選択を解除
+    const currentStepEl = optionBtn.closest('.question-step');
+    if (currentStepEl) {
+      currentStepEl.querySelectorAll('.option-btn').forEach(btn => {
+        btn.classList.remove('selected');
+      });
+    }
+
+    // クリックされたボタンを選択状態に
+    optionBtn.classList.add('selected');
+
+    // 答えを保存
+    const step = currentStepEl.dataset.step;
+    const value = optionBtn.dataset.value;
+    
+    if (step === '1') answers.location = value;
+    else if (step === '2') answers.condition = value;
+    else if (step === '3') answers.timing = value;
+
+    // 少し遅延してから次のステップへ
+    setTimeout(nextStep, 500);
+  });
+
+  // 初期化
+  updateProgress();
+}
+
+// DOMContentLoadedで簡易診断を初期化
+document.addEventListener('DOMContentLoaded', function() {
+  initQuickAssessment();
+});

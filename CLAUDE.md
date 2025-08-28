@@ -4,21 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a hybrid website project for "整理のミカタ" (Estate Organization Service) that combines traditional static HTML pages with modern React/TypeScript components. The project uses Vite as the build tool and integrates with MicroCMS for blog content management.
+This is a traditional multi-page website project for "整理のミカタ" (Estate Organization Service) built with vanilla JavaScript, HTML, and CSS. The project uses Vite as the build tool and integrates with MicroCMS for blog content management.
 
 ## Architecture
 
 ### Frontend Structure
 - **Static HTML Pages**: Traditional multi-page website (`index.html`, `about.html`, `services.html`, etc.)
-- **React Components**: Modern UI components in `src/components/` using shadcn/ui library
-- **Styling**: Combination of traditional CSS (`css/style.css`) and Tailwind CSS for React components
-- **Content Management**: MicroCMS integration for blog functionality
+- **JavaScript**: Vanilla JavaScript modules in `js/` directory for interactive functionality
+- **Styling**: Traditional CSS (`css/style.css`) 
+- **Content Management**: MicroCMS integration for blog functionality via `microcms-js-sdk`
 
 ### Key Technologies
 - **Build Tool**: Vite with multiple entry points for different HTML pages
-- **Framework**: React 18 with TypeScript
-- **UI Library**: shadcn/ui components (Radix UI primitives)
-- **Styling**: Tailwind CSS + traditional CSS
+- **JavaScript**: Vanilla ES6+ modules (no framework)
 - **CMS**: MicroCMS for blog content
 - **Testing**: Playwright for E2E testing
 - **Deployment**: Lovable platform
@@ -53,28 +51,33 @@ npm i
 ## Development Guidelines
 
 ### File Organization
-- Static assets and traditional pages in root directory
-- React components in `src/components/`
-- Utility functions in `src/lib/`
-- Custom hooks in `src/hooks/`
-- Component aliases use `@/` prefix (resolves to `./src`)
+- Static HTML pages and assets in root directory
+- JavaScript modules in `js/` directory
+- Styling in `css/` directory  
+- Images in `images/` directory
+- Tests in `tests/` directory
 
 ### Content Management
-- Blog content fetched from MicroCMS via `src/lib/microcms.ts`
+- Blog content fetched from MicroCMS via `microcms-js-sdk`
 - Environment variables required: `VITE_MICROCMS_SERVICE_DOMAIN`, `VITE_MICROCMS_API_KEY`
-- Blog components: `BlogCard.tsx` for article display
-- Blog pages use vanilla JavaScript for MicroCMS integration (see `js/blog.js`, `js/blog-detail.js`)
+- Blog integration handled by `js/blog.js` and `js/blog-detail.js`
 
 ### Build Configuration
-- Multi-page setup via Vite `rollupOptions.input` with entries: main, about, services, contact, faq, blog, blogDetail
+- Multi-page setup via Vite `rollupOptions.input` with entries: main, about, services, contact, faq, blog, blogDetail, mainJs
 - Each HTML page has its own JavaScript entry point in `js/` directory
 - Static assets served from `images/` and `css/` directories
-- Hybrid architecture combines traditional JavaScript (in `js/` directory) with React components
+- Base path configured for Lovable deployment: `/serene-green-memories-local/`
 
 ### Testing Setup
 - Playwright configured for cross-browser testing (Chrome, Firefox, Safari)
 - Test server automatically starts on `http://localhost:8080`
 - Tests located in `tests/` directory
+
+### JavaScript Architecture
+- `js/main.js`: Core functionality including mobile menu, testimonial slider, FAQ accordion, contact form
+- `js/index.js`: Entry point for main page
+- `js/blog.js`: Blog listing page functionality
+- `js/blog-detail.js`: Individual blog post functionality
 
 ## Git Workflow
 
@@ -83,6 +86,11 @@ npm i
 - Use descriptive commit messages that explain the changes and their purpose
 - Follow the established commit message format with Claude Code attribution
 
-## MCP Server Integration
+## Environment Setup
+- Environment variables stored in `.env` file (not committed to git)
+- Required variables: `VITE_MICROCMS_SERVICE_DOMAIN`, `VITE_MICROCMS_API_KEY`
+- Development server runs on `http://localhost:8080` (configured in Playwright and Vite)
 
-The project includes MCP server configurations in the `mcp-servers/` directory with various utilities including filesystem, fetch, git, and memory servers. These are development tools and not part of the main application.
+## Project Notes
+- Despite README.md mentioning React/TypeScript/Tailwind, this project actually uses vanilla JavaScript, HTML, and CSS
+- The README.md appears to be a template from Lovable platform and doesn't accurately reflect the current tech stack

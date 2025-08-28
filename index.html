@@ -49,79 +49,494 @@
   <div class="main-visual">
     <div class="container main-visual-flex">
       <div class="main-visual-content">
-        <h2 class="main-visual-title">ご遺族の負担を軽減<br>安心の遺品整理サービス</h2>
-        <p class="main-visual-text">お客様に寄り添い、丁寧で迅速な作業<br>思い出を大切にする整理のプロフェッショナル</p>
+        <h2 class="main-visual-title">思い出を大切に、<br>費用は抑えて査定・買取で料金がお得になる遺品整理</h2>
+        <p class="main-visual-text">価値ある品の査定・買取で作業料金を削減<br>お客様に寄り添う整理のプロフェッショナル</p>
+        
+        <!-- 料金削減例 -->
+
+
         <div class="main-visual-buttons">
-          <a href="contact.html" class="btn btn-large btn-primary">無料お見積り・ご相談はこちら</a>
-          <a href="tel:0120-433-233" class="btn btn-large btn-primary tel-btn">お電話はこちら 0120-433-233</a>
+          <a href="contact.html" class="btn btn-large btn-secondary">メールでのお問い合わせはこちら</a>
+          <a href="tel:0120-433-233" class="btn btn-large btn-primary tel-btn tel-btn-enhanced">📞 無料相談 0120-433-233</a>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- 問題提起セクション -->
+  <section class="section customer-problems">
+    <div class="container">
+      <h2 class="section-title">こんなお悩みありませんか？</h2>
+      <div class="problems-grid">
+        <div class="problem-item">
+          <div class="problem-icon">
+            <img src="images/icon-worry-money.svg" alt="費用の心配" onerror="this.style.display='none'">
+            <div class="problem-icon-fallback">💰</div>
+          </div>
+          <div class="problem-content">
+            <h3 class="problem-title">遺品整理の費用が心配...</h3>
+            <p class="problem-text">どのくらい費用がかかるかわからず、なかなか踏み出せない。できれば費用を抑えたい。</p>
+          </div>
+        </div>
+
+        <div class="problem-item">
+          <div class="problem-icon">
+            <img src="images/icon-worry-method.svg" alt="方法がわからない" onerror="this.style.display='none'">
+            <div class="problem-icon-fallback">❓</div>
+          </div>
+          <div class="problem-content">
+            <h3 class="problem-title">何から手をつけていいかわからない...</h3>
+            <p class="problem-text">大量の遺品を前に、どこから始めればいいのか、どう分別すればいいのかわからない。</p>
+          </div>
+        </div>
+
+        <div class="problem-item">
+          <div class="problem-icon">
+            <img src="images/icon-worry-memory.svg" alt="思い出を大切に" onerror="this.style.display='none'">
+            <div class="problem-icon-fallback">💝</div>
+          </div>
+          <div class="problem-content">
+            <h3 class="problem-title">故人の思い出を大切にしたい...</h3>
+            <p class="problem-text">思い出がつまった品々をただ処分するのではなく、故人を偲びながら丁寧に整理したい。</p>
+          </div>
+        </div>
+
+        <div class="problem-item">
+          <div class="problem-icon">
+            <img src="images/icon-worry-time.svg" alt="時間がない" onerror="this.style.display='none'">
+            <div class="problem-icon-fallback">⏰</div>
+          </div>
+          <div class="problem-content">
+            <h3 class="problem-title">時間がない、遠方で通えない...</h3>
+            <p class="problem-text">仕事や育児で忙しく時間が取れない。実家が遠方で頻繁に通うことができない。</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="problems-solution">
+        <div class="solution-box">
+          <h3 class="solution-title">そのお悩み、「整理のミカタ」にお任せください！</h3>
+          <p class="solution-text">
+            査定・買取サービスで費用を抑えながら、故人様の思い出を大切にした遺品整理を行います。<br>
+            経験豊富なプロが迅速・丁寧に対応し、お客様の負担を最小限に抑えます。
+          </p>
+          <div class="solution-cta">
+            <a href="contact.html" class="btn btn-primary">無料お見積り・ご相談</a>
+            <a href="tel:0120-433-233" class="btn btn-outline">📞 0120-433-233</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 30秒簡易診断ツール -->
+  <section class="section quick-assessment">
+    <div class="container">
+      <div class="assessment-content">
+        <div class="assessment-header">
+          <h2 class="assessment-title">🔍 30秒簡易診断</h2>
+          <p class="assessment-subtitle">簡単な質問に答えるだけで、おおよその料金と作業期間がすぐに分かります</p>
+        </div>
+
+        <div class="assessment-form" id="quick-assessment">
+          <div class="question-step active" data-step="1">
+            <h3 class="question-title">整理したい場所はどちらですか？</h3>
+            <div class="option-group">
+              <button class="option-btn" data-value="apartment">
+                <span class="option-icon">🏠</span>
+                <span class="option-text">アパート・マンション</span>
+              </button>
+              <button class="option-btn" data-value="house">
+                <span class="option-icon">🏘️</span>
+                <span class="option-text">一戸建て</span>
+              </button>
+              <button class="option-btn" data-value="room">
+                <span class="option-icon">🛏️</span>
+                <span class="option-text">部屋の一部</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="question-step" data-step="2">
+            <h3 class="question-title">部屋の状況はいかがですか？</h3>
+            <div class="option-group">
+              <button class="option-btn" data-value="normal">
+                <span class="option-icon">✨</span>
+                <span class="option-text">普通に生活していた</span>
+              </button>
+              <button class="option-btn" data-value="cluttered">
+                <span class="option-icon">📦</span>
+                <span class="option-text">物が多く散らかっている</span>
+              </button>
+              <button class="option-btn" data-value="heavy">
+                <span class="option-icon">📚</span>
+                <span class="option-text">非常に物が多い</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="question-step" data-step="3">
+            <h3 class="question-title">希望する作業期間は？</h3>
+            <div class="option-group">
+              <button class="option-btn" data-value="urgent">
+                <span class="option-icon">⚡</span>
+                <span class="option-text">至急（1週間以内）</span>
+              </button>
+              <button class="option-btn" data-value="normal">
+                <span class="option-icon">📅</span>
+                <span class="option-text">通常（2-4週間）</span>
+              </button>
+              <button class="option-btn" data-value="flexible">
+                <span class="option-icon">🕒</span>
+                <span class="option-text">相談したい</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="assessment-result" id="assessment-result" style="display: none;">
+            <div class="result-header">
+              <h3 class="result-title">📊 診断結果</h3>
+            </div>
+            <div class="result-content">
+              <div class="result-item">
+                <div class="result-label">予想料金</div>
+                <div class="result-value" id="estimated-cost">¥150,000 〜 ¥280,000</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">作業期間</div>
+                <div class="result-value" id="estimated-time">2〜3日</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">買取効果</div>
+                <div class="result-value" id="buyback-effect">最大 ¥50,000 削減可能</div>
+              </div>
+            </div>
+            <div class="result-cta">
+              <p class="result-note">※正確な見積もりは、現地での無料査定が必要です</p>
+              <div class="result-buttons">
+                <a href="tel:0120-433-233" class="btn btn-primary">📞 今すぐ無料査定を依頼</a>
+                <a href="contact.html" class="btn btn-outline">メールで詳細相談</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-text">
+              <span id="current-step">1</span> / 3
+            </div>
+          </div>
+        </div>
+
+        <div class="assessment-benefits">
+          <h3 class="benefits-title">診断のメリット</h3>
+          <div class="benefits-list">
+            <div class="benefit-item">
+              <span class="benefit-icon">💰</span>
+              <span class="benefit-text">事前に予算の目安が分かる</span>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">⏰</span>
+              <span class="benefit-text">スケジュール調整がしやすい</span>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">📞</span>
+              <span class="benefit-text">電話での相談がスムーズになる</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- サービス紹介 -->
   <section class="section services-section">
     <div class="container">
       <h2 class="section-title">サービス内容</h2>
       <div class="service-list">
-        <div class="service-item">
+        <div class="service-item service-highlight">
           <div class="service-image">
             <img src="images/service-estate.png" alt="遺品整理">
           </div>
           <div class="service-content">
             <h3 class="service-title">遺品整理</h3>
-            <p class="service-text">故人様の想いを大切にしながら、ご遺族の負担を軽減します。価値ある品の査定・買取も行い、費用負担を抑えます。</p>
+            <p class="service-text">故人様の想いを大切にしながら、ご遺族の負担を軽減。<strong>価値ある品の査定・買取で作業料金を平均30〜50%削減</strong>し、心のこもった整理を実現します。<span class="cost-highlight">※実際の買取額が作業料金から差し引かれます</span></p>
+            <div class="service-features">
+              <span class="feature-tag cost-tag">30〜50%費用削減</span>
+              <span class="feature-tag">査定・買取対応</span>
+              <span class="feature-tag">思い出重視</span>
+            </div>
+            <div class="service-cost-example">
+              <div class="cost-example-title">💰 削減例</div>
+              <div class="cost-example-text">作業料金20万円 → 買取額8万円 = <strong>実質12万円</strong></div>
+            </div>
             <a href="services.html#estate" class="service-link">詳しく見る</a>
           </div>
         </div>
 
         <div class="service-item">
           <div class="service-image">
-            <img src="images/img-case3@2x.png" alt="ゴミ屋敷・汚部屋清掃">
+            <img src="images/service-lifetime.png" alt="生前整理" onerror="this.src='images/img-case3@2x.png'">
           </div>
           <div class="service-content">
-            <h3 class="service-title">ゴミ屋敷・汚部屋清掃</h3>
-            <p class="service-text">「どこから手をつけていいかわからない」そんなお悩みにお応えします。プロの技術で安全・迅速に清掃いたします。</p>
-            <a href="services.html#waste" class="service-link">詳しく見る</a>
+            <h3 class="service-title">生前整理</h3>
+            <p class="service-text">ご本人様とご家族が一緒に取り組む整理サービス。<strong>不用な物の買取査定で作業費用を20〜40%削減</strong>、処分費用も大幅に抑制。<span class="cost-highlight">お支払い額を最小限に抑えて</span>快適な住環境を実現します。</p>
+            <div class="service-features">
+              <span class="feature-tag cost-tag">20〜40%費用削減</span>
+              <span class="feature-tag">買取査定</span>
+              <span class="feature-tag">住環境改善</span>
+            </div>
+            <div class="service-cost-example">
+              <div class="cost-example-title">💰 削減例</div>
+              <div class="cost-example-text">作業料金15万円 → 買取額4万円 = <strong>実質11万円</strong></div>
+            </div>
+            <a href="services.html#lifetime" class="service-link">詳しく見る</a>
           </div>
         </div>
         
         <div class="service-item">
           <div class="service-image">
-            <img src="images/img-case4@2x.png" alt="不動産整理">
+            <img src="images/service-cleanup.png" alt="片付け" onerror="this.src='images/img-case4@2x.png'">
           </div>
           <div class="service-content">
-            <h3 class="service-title">不動産整理</h3>
-            <p class="service-text">住まいに込められた思い出を大切にしながら、不動産の整理を丁寧にお手伝いします。売却・活用のご相談から残置物の撤去まで、心を込めてサポートいたします。</p>
-            <a href="services.html#waste" class="service-link">詳しく見る</a>
+            <h3 class="service-title">片付け・清掃</h3>
+            <p class="service-text">ゴミ屋敷・汚部屋から不用品回収まで、どんな状況でも対応。<strong>リサイクル可能な品の買取査定で作業料金を25〜45%削減</strong>、処分費も大幅カット。<span class="cost-highlight">実質的な料金負担を劇的に軽減</span>します。</p>
+            <div class="service-features">
+              <span class="feature-tag cost-tag">25〜45%費用削減</span>
+              <span class="feature-tag">リサイクル買取</span>
+              <span class="feature-tag">迅速対応</span>
+            </div>
+            <div class="service-cost-example">
+              <div class="cost-example-title">💰 削減例</div>
+              <div class="cost-example-text">作業料金30万円 → 買取額10万円 = <strong>実質20万円</strong></div>
+            </div>
+            <a href="services.html#cleanup" class="service-link">詳しく見る</a>
           </div>
         </div>
 
-        <div class="service-item">
-          <div class="service-image">
-            <img src="images/img-case5@2x.png" alt="解体業者・リフォーム業者のご紹介">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">解体業者・リフォーム業者のご紹介</h3>
-            <p class="service-text">家の解体やリフォームをお考えの方へ、安心して任せられる業者をご紹介します。ご希望やご予算に合わせて、ぴったりのパートナーをご提案いたします。</p>
-            <a href="services.html#waste" class="service-link">詳しく見る</a>
-          </div>
-        </div>
 
-        <div class="service-item">
-          <div class="service-image">
-            <img src="images/img-case6@2x.png" alt="各種手続き代行">
-          </div>
-          <div class="service-content">
-            <h3 class="service-title">各種手続き代行</h3>
-            <p class="service-text">複雑で手間のかかる各種手続きを、専門スタッフが代行いたします。お客様のご負担を軽減し、スムーズな手続き完了をサポートいたしますので、安心してお任せください。</p>
-            <a href="services.html#waste" class="service-link">詳しく見る</a>
-          </div>
-        </div>
       </div>
 
       <div class="section-more">
         <a href="services.html" class="btn btn-primary">サービス一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 料金削減システム詳細説明 -->
+  <section class="section cost-reduction-system">
+    <div class="container">
+      <div class="system-header">
+        <h2 class="system-title">なぜ作業料金が安くなるのか？</h2>
+        <p class="system-subtitle">買取システムで実際の支払額を大幅削減！</p>
+      </div>
+
+      <div class="system-explanation">
+        <div class="explanation-steps">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3 class="step-title">整理作業と同時に査定</h3>
+              <p class="step-text">経験豊富なスタッフが、整理作業を行いながら価値ある品を見極めて査定いたします。</p>
+            </div>
+            <div class="step-icon">🔍</div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3 class="step-title">幅広い品目の買取対応</h3>
+              <p class="step-text">古美術・貴金属から家電・書籍まで、様々な品目を適正価格で買取査定いたします。</p>
+            </div>
+            <div class="step-icon">💎</div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3 class="step-title">買取額を作業費から差し引き</h3>
+              <p class="step-text">査定した買取金額を作業料金から差し引くことで、実質的な支払額を大幅に削減します。</p>
+            </div>
+            <div class="step-icon">💰</div>
+          </div>
+        </div>
+
+        <div class="system-examples">
+          <h3 class="examples-title">料金削減の実例</h3>
+          <div class="examples-grid">
+            <div class="example-case">
+              <div class="case-header">
+                <h4 class="case-type">戸建て 4LDK</h4>
+                <div class="case-situation">母の遺品整理</div>
+              </div>
+              <div class="case-calculation">
+                <div class="calc-row">
+                  <span class="calc-item">基本作業料金</span>
+                  <span class="calc-value">280,000円</span>
+                </div>
+                <div class="calc-row minus">
+                  <span class="calc-item">買取査定額</span>
+                  <span class="calc-value">120,000円</span>
+                </div>
+                <div class="calc-row result">
+                  <span class="calc-item">実質支払額</span>
+                  <span class="calc-value">160,000円</span>
+                </div>
+              </div>
+              <div class="case-savings">43%削減！</div>
+            </div>
+
+            <div class="example-case">
+              <div class="case-header">
+                <h4 class="case-type">マンション 3LDK</h4>
+                <div class="case-situation">生前整理</div>
+              </div>
+              <div class="case-calculation">
+                <div class="calc-row">
+                  <span class="calc-item">基本作業料金</span>
+                  <span class="calc-value">200,000円</span>
+                </div>
+                <div class="calc-row minus">
+                  <span class="calc-item">買取査定額</span>
+                  <span class="calc-value">65,000円</span>
+                </div>
+                <div class="calc-row result">
+                  <span class="calc-item">実質支払額</span>
+                  <span class="calc-value">135,000円</span>
+                </div>
+              </div>
+              <div class="case-savings">33%削減！</div>
+            </div>
+
+            <div class="example-case">
+              <div class="case-header">
+                <h4 class="case-type">アパート 2DK</h4>
+                <div class="case-situation">片付け・清掃</div>
+              </div>
+              <div class="case-calculation">
+                <div class="calc-row">
+                  <span class="calc-item">基本作業料金</span>
+                  <span class="calc-value">120,000円</span>
+                </div>
+                <div class="calc-row minus">
+                  <span class="calc-item">買取査定額</span>
+                  <span class="calc-value">35,000円</span>
+                </div>
+                <div class="calc-row result">
+                  <span class="calc-item">実質支払額</span>
+                  <span class="calc-value">85,000円</span>
+                </div>
+              </div>
+              <div class="case-savings">29%削減！</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="system-benefits">
+          <div class="benefit-highlight">
+            <h3 class="benefit-title">お客様にとってのメリット</h3>
+            <div class="benefits-list">
+              <div class="benefit-point">
+                <span class="benefit-icon">✅</span>
+                <span class="benefit-text">作業費用を大幅削減できる</span>
+              </div>
+              <div class="benefit-point">
+                <span class="benefit-icon">✅</span>
+                <span class="benefit-text">思い出の品を有効活用できる</span>
+              </div>
+              <div class="benefit-point">
+                <span class="benefit-icon">✅</span>
+                <span class="benefit-text">環境に配慮したリサイクルに貢献</span>
+              </div>
+              <div class="benefit-point">
+                <span class="benefit-icon">✅</span>
+                <span class="benefit-text">追加費用一切なし、透明な料金体系</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="system-cta">
+          <div class="cta-text">
+            <h3 class="cta-title">あなたの場合はいくら安くなる？</h3>
+            <p class="cta-subtitle">まずは無料査定で料金削減の可能性をチェック！</p>
+          </div>
+          <div class="cta-buttons">
+            <a href="tel:0120-433-233" class="btn btn-large btn-primary tel-cta">📞 無料査定で削減額をチェック</a>
+            <a href="contact.html" class="btn btn-large btn-outline">メールで査定依頼</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 買取サービス特別セクション -->
+  <section class="section valuation-special-section">
+    <div class="container">
+      <div class="valuation-special-inner">
+        <div class="valuation-content">
+          <h2 class="valuation-title">査定・買取で作業料金を大幅削減！</h2>
+          <p class="valuation-subtitle">思わぬお宝が眠っているかもしれません</p>
+          
+          <div class="valuation-benefits">
+            <div class="benefit-item">
+              <div class="benefit-icon">💰</div>
+              <h3 class="benefit-title">料金削減効果</h3>
+              <p class="benefit-text">買取価格分を作業料金から差し引き、実質負担額を大幅に軽減</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🔍</div>
+              <h3 class="benefit-title">プロの査定</h3>
+              <p class="benefit-text">経験豊富なスタッフが価値を見極め、適正価格で査定いたします</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">♻️</div>
+              <h3 class="benefit-title">リユース・リサイクル</h3>
+              <p class="benefit-text">廃棄せず再利用することで、環境にも配慮した整理を実現</p>
+            </div>
+          </div>
+
+          <div class="valuation-categories">
+            <h3 class="categories-title">主な買取対象品目</h3>
+            <div class="categories-grid">
+              <div class="category-item">
+                <span class="category-name">古美術・骨董品</span>
+                <span class="category-example">茶道具、陶磁器、掛け軸</span>
+              </div>
+              <div class="category-item">
+                <span class="category-name">貴金属・宝石</span>
+                <span class="category-example">指輪、ネックレス、時計</span>
+              </div>
+              <div class="category-item">
+                <span class="category-name">家電・オーディオ</span>
+                <span class="category-example">テレビ、音響機器</span>
+              </div>
+              <div class="category-item">
+                <span class="category-name">書籍・レコード</span>
+                <span class="category-example">古書、CD、DVD、LP盤</span>
+              </div>
+              <div class="category-item">
+                <span class="category-name">ブランド品</span>
+                <span class="category-example">バッグ、財布、衣類</span>
+              </div>
+              <div class="category-item">
+                <span class="category-name">コレクター品</span>
+                <span class="category-example">フィギュア、切手、コイン</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="valuation-cta">
+            <p class="valuation-cta-text">まずは無料査定・ご相談から始めませんか？</p>
+            <div class="valuation-cta-buttons">
+              <a href="tel:0120-433-233" class="btn btn-large btn-primary tel-cta">📞 無料査定相談 0120-433-233</a>
+              <a href="contact.html" class="btn btn-large btn-outline">メールで査定相談</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -162,6 +577,21 @@
           <h3 class="reason-title">アフターサポート</h3>
           <p class="reason-text">作業完了後も、関連するご相談やお困りごとにしっかり対応します。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA セクション1 -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h3 class="cta-title">まずはお気軽にご相談ください</h3>
+        <p class="cta-text">経験豊富なスタッフが、お客様のご状況に合わせた最適なプランをご提案いたします</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn btn-large btn-primary">無料お見積り・ご相談</a>
+          <a href="tel:0120-433-233" class="btn btn-large btn-outline tel-cta">📞 0120-433-233</a>
+        </div>
+        <p class="cta-note">お見積り・ご相談は完全無料です</p>
       </div>
     </div>
   </section>
@@ -214,6 +644,117 @@
     </div>
   </section>
 
+  <!-- スタッフ紹介 -->
+  <section class="section staff-intro">
+    <div class="container">
+      <h2 class="section-title">経験豊富な専門スタッフがお手伝いします</h2>
+      <p class="section-subtitle">資格を持つプロフェッショナルが、お客様の大切な思い出を丁寧に整理いたします</p>
+      
+      <div class="staff-stats">
+        <div class="stat-item">
+          <div class="stat-number">3,500+</div>
+          <div class="stat-label">累計対応件数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">96%</div>
+          <div class="stat-label">お客様満足度</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15年</div>
+          <div class="stat-label">業界経験年数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24時間</div>
+          <div class="stat-label">受付対応</div>
+        </div>
+      </div>
+
+      <div class="staff-grid">
+        <div class="staff-member">
+          <div class="staff-photo">
+            <img src="images/staff-director.jpg" alt="代表取締役 田中大輔">
+          </div>
+          <div class="staff-info">
+            <h3 class="staff-name">田中 大輔</h3>
+            <div class="staff-title">代表取締役</div>
+            <div class="staff-qualifications">
+              <span class="qualification">遺品整理士</span>
+              <span class="qualification">古物商許可証</span>
+            </div>
+            <p class="staff-description">15年の業界経験を持つ代表。お客様一人ひとりに寄り添った丁寧な対応を心がけています。</p>
+          </div>
+        </div>
+
+        <div class="staff-member">
+          <div class="staff-photo">
+            <img src="images/staff-manager.jpg" alt="現場責任者 佐藤恵子">
+          </div>
+          <div class="staff-info">
+            <h3 class="staff-name">佐藤 恵子</h3>
+            <div class="staff-title">現場責任者</div>
+            <div class="staff-qualifications">
+              <span class="qualification">遺品整理士</span>
+              <span class="qualification">整理収納アドバイザー1級</span>
+            </div>
+            <p class="staff-description">女性の視点を活かし、思い出の品の整理を細やかにサポートいたします。</p>
+          </div>
+        </div>
+
+        <div class="staff-member">
+          <div class="staff-photo">
+            <img src="images/staff-appraiser.jpg" alt="査定士 山田健一">
+          </div>
+          <div class="staff-info">
+            <h3 class="staff-name">山田 健一</h3>
+            <div class="staff-title">専属査定士</div>
+            <div class="staff-qualifications">
+              <span class="qualification">古物商許可証</span>
+              <span class="qualification">骨董品鑑定士</span>
+            </div>
+            <p class="staff-description">豊富な査定経験で、思わぬお宝の発見をサポート。適正価格での買取を実現します。</p>
+          </div>
+        </div>
+
+        <div class="staff-member">
+          <div class="staff-photo">
+            <img src="images/staff-technician.jpg" alt="作業スタッフ 鈴木正明">
+          </div>
+          <div class="staff-info">
+            <h3 class="staff-name">鈴木 正明</h3>
+            <div class="staff-title">作業スタッフ</div>
+            <div class="staff-qualifications">
+              <span class="qualification">産業廃物処理資格</span>
+              <span class="qualification">特殊清掃技能士</span>
+            </div>
+            <p class="staff-description">迅速かつ丁寧な作業で、お客様の負担を最小限に抑えます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="staff-promise">
+        <h3 class="promise-title">私たちのお約束</h3>
+        <div class="promise-grid">
+          <div class="promise-item">
+            <div class="promise-icon">🤝</div>
+            <div class="promise-text">丁寧なカウンセリング</div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-icon">🔒</div>
+            <div class="promise-text">完全守秘義務</div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-icon">⏰</div>
+            <div class="promise-text">迅速対応</div>
+          </div>
+          <div class="promise-item">
+            <div class="promise-icon">💯</div>
+            <div class="promise-text">作業品質保証</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- お客様の声 -->
   <section class="section testimonials">
     <div class="container">
@@ -247,6 +788,21 @@
     </div>
   </section>
 
+  <!-- CTA セクション2 -->
+  <section class="section cta-section cta-section-alt">
+    <div class="container">
+      <div class="cta-box">
+        <h3 class="cta-title">ご満足いただけるサービスをお約束します</h3>
+        <p class="cta-text">多くのお客様からご好評をいただいている私たちのサービスを、ぜひ一度お試しください</p>
+        <div class="cta-buttons">
+          <a href="tel:0120-433-233" class="btn btn-large btn-primary tel-cta">📞 今すぐお電話 0120-433-233</a>
+          <a href="contact.html" class="btn btn-large btn-outline">メールでご相談</a>
+        </div>
+        <p class="cta-note">受付時間: 10:00〜19:00（年中無休）</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ブログセクション -->
   <section class="section blog-section">
     <div class="container">
@@ -270,7 +826,7 @@
           <p>お見積りのご依頼やご相談は、お電話またはお問い合わせフォームよりお気軽にご連絡ください。</p>
           <div class="contact-info">
             <div class="contact-tel">
-              <div class="contact-tel-label">お電話でのお問い合わせ</div>
+              <div class="contact-tel-label">📞 無料相談・お電話でのお問い合わせ</div>
               <div class="contact-tel-number">0120-433-233</div>
               <div class="contact-tel-hours">受付時間: 10:00〜19:00（年中無休）</div>
             </div>
@@ -334,8 +890,20 @@
     </div>
   </footer>
 
+  <!-- フローティング電話ボタン -->
+  <div class="floating-phone-btn" id="floating-phone">
+    <a href="tel:0120-433-233" class="floating-btn-link">
+      <div class="floating-btn-icon">📞</div>
+      <div class="floating-btn-text">
+        <span class="floating-btn-main">今すぐ電話</span>
+        <span class="floating-btn-sub">0120-433-233</span>
+      </div>
+    </a>
+  </div>
+
   <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   <script type="module" src="/js/index.js"></script>
   <script type="module" src="/js/main.js"></script>
+
 </body>
 </html>
