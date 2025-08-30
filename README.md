@@ -1,73 +1,127 @@
-# Welcome to your Lovable project
+# ミカタ（遺品整理サービス）Webサイト
 
-## Project info
+静的マルチページ（MPA）構成のマーケティングサイトです。Vite を用いて開発・ビルドし、ブログのみ MicroCMS と連携しています。GitHub Pages へ自動デプロイされます。
 
-**URL**: https://lovable.dev/projects/206daa59-b809-4db9-9efe-646bc021320a
+## 主な機能
 
-## How can I edit this code?
+- トップ・サービス・会社情報・FAQ・お問い合わせなどの静的ページ（`index.html`、`services.html`、`about.html`、`faq.html`、`contact.html`）
+- ブログ一覧／詳細（`blog.html`、`blog-detail.html`）
+  - MicroCMS から記事を取得
+  - カテゴリ絞り込み・ページネーション
+  - 環境変数が未設定の場合はサンプルデータにフォールバック
+- UI 挙動（`js/main.js`）
+  - スマホナビ、FAQ アコーディオン、簡易見積りウィザード など
 
-There are several ways of editing your application.
+## 技術スタック
 
-**Use Lovable**
+- HTML5 / CSS3 / Vanilla JavaScript (ES6+)
+- Vite（マルチページ入力でビルド）
+- MicroCMS（ブログ用）
+- Playwright（E2E テスト）
+- ESLint
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/206daa59-b809-4db9-9efe-646bc021320a) and start prompting.
+補足:
+- リポジトリに `tailwind.config.ts` はありますが、現状 Tailwind は未使用です。
+- `microcms-js-sdk` が依存に含まれていますが、現状は `fetch` による API 呼び出しで実装しています。
 
-Changes made via Lovable will be committed automatically to this repo.
+## 必要要件
 
-**Use your preferred IDE**
+- Node.js 18 以上
+- npm
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## セットアップ
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
 npm i
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+MicroCMS を使用する場合は、リポジトリルートに `.env` を作成し、以下を設定してください。
+
+```dotenv
+VITE_MICROCMS_SERVICE_DOMAIN=your-service-domain
+VITE_MICROCMS_API_KEY=your-api-key
+```
+
+セキュリティ上、`.env` は Git にコミットしないことを推奨します（必要に応じて `.gitignore` に追加）。既にコミット済みのキーがある場合は、必ずキーのローテーションを行ってください。
+
+## 開発（ローカル）
+
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+開発サーバ: http://localhost:8080
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Vite のベースパスは GitHub Pages 用に `vite.config.js` で `base: '/serene-green-memories-local/'` に設定されています。リポジトリ名を変更する場合は、`base` も合わせて更新してください。
 
-**Use GitHub Codespaces**
+## ビルドとプレビュー
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+npm run build      # dist/ に出力
+npm run preview    # ビルド結果のローカルプレビュー
+```
 
-## What technologies are used for this project?
+## テスト
 
-This project is built with:
+Playwright による E2E テストを用意しています。
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```sh
+npm run test         # ヘッドレス
+npm run test:headed  # ブラウザ表示あり
+npm run test:ui      # Playwright UI
+```
 
-## How can I deploy this project?
+設定: `playwright.config.js`（テスト時に開発サーバを起動し、`http://localhost:8080` に接続）
 
-Simply open [Lovable](https://lovable.dev/projects/206daa59-b809-4db9-9efe-646bc021320a) and click on Share -> Publish.
+## デプロイ（GitHub Pages）
 
-## Can I connect a custom domain to my Lovable project?
+- `main` ブランチへの push をトリガに、GitHub Actions（`.github/workflows/deploy.yml`）でビルド・デプロイされます。
+- 出力ディレクトリは `dist/` です。
+- カスタムドメインを使う場合は、GitHub Pages の設定で CNAME を構成してください（必要に応じてリポジトリの `base` 設定も見直してください）。
 
-Yes, you can!
+## ディレクトリ構成（抜粋）
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```
+.
+├── index.html              # トップページ
+├── about.html              # 会社情報
+├── services.html           # サービス
+├── contact.html            # お問い合わせ
+├── faq.html                # FAQ
+├── blog.html               # ブログ一覧（MicroCMS）
+├── blog-detail.html        # ブログ詳細（MicroCMS）
+├── css/
+│   └── style.css           # サイトのスタイル
+├── js/
+│   ├── main.js             # ナビ/FAQ/簡易見積りなどの UI
+│   ├── index.js            # トップの最新ブログプレビュー
+│   ├── blog.js             # 一覧取得・ページネーション
+│   └── blog-detail.js      # 記事詳細・関連記事・カテゴリ
+├── images/                 # 画像アセット
+├── tests/
+│   └── example.spec.js     # E2E サンプル
+├── vite.config.js          # Vite 設定（base, multi-input）
+├── playwright.config.js    # Playwright 設定
+└── package.json
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## MicroCMS について
+
+- 必要な環境変数
+  - `VITE_MICROCMS_SERVICE_DOMAIN`
+  - `VITE_MICROCMS_API_KEY`
+- 環境変数が未設定・無効の場合、ブログはサンプルデータ表示にフォールバックします（ローカル開発を止めず検証可能）。
+
+## Lint / コードスタイル
+
+```sh
+npm run lint
+```
+
+## 補足ドキュメント
+
+開発メモや方針は `.serena/memories/` 配下に整理されています。
+
+---
+
+不明点や改善要望があれば Issue / PR を作成してください。
