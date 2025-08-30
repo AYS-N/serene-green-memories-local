@@ -146,7 +146,7 @@ function createBlogCard(blog) {
   // 画像部分
   let imageHtml = '';
   if (blog.eyecatch) {
-    imageHtml = `<img src="${blog.eyecatch.url}?w=400&h=250&fit=crop" alt="${blog.title}" class="blog-card-image">`;
+    imageHtml = `<img src="${blog.eyecatch.url}?w=400&h=250&fit=crop" alt="${blog.title}" class="blog-card-image" loading="lazy">`;
   } else {
     imageHtml = `<div class="blog-card-no-image">No Image</div>`;
   }
