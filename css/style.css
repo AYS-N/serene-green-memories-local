@@ -144,6 +144,13 @@ p {
   font-size: 16px;
 }
 
+/* ボタン内アイコンの共通スタイル */
+.btn .btn-icon {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .btn-primary {
   background-color: var(--color-primary);
   color: white;
