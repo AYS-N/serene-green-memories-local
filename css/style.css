@@ -400,9 +400,9 @@ p {
 }
 
 .main-visual-buttons .btn {
-  flex: 1;
+  flex: 1 1 0;
   max-width: 280px;
-  white-space: nowrap;
+  white-space: normal; /* 2行折り返しを許可してはみ出し防止 */
 }
 
 /* メインビジュアルの電話ボタンを隣のボタンと同じデザインに */
@@ -4322,3 +4322,7 @@ CTA セクション
     gap: 15px;
   }
 }
+
+/* ヒーローCTA内のテキスト折返しを許可（セカンダリ特例） */
+.main-visual-buttons .btn-secondary { white-space: normal; }
+
